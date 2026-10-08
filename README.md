@@ -188,36 +188,15 @@ Erreurs : `application/problem+json`, avec 400 pour la validation, 401 pour l'au
 ## Vérification et livraison
 
 ```powershell
-.\mvnw.cmd clean verify
+.\mvnw.cmd package
 java -jar target/gestion-stock-0.0.1-SNAPSHOT.jar
 ```
 
-Les tests utilisent H2 avec les migrations réelles. Pour PostgreSQL, créer une base de test dédiée et définir `TEST_DB_URL`, `TEST_DB_USERNAME`, `TEST_DB_PASSWORD` avant de lancer la même commande. Ne jamais lancer les tests sur la base de travail.
-
-Les tests vérifient les droits, l'isolation des demandes et consommations, le stock, les décisions concurrentes, les notifications et leurs reprises, le mapping des attributs/groupes AD et l'absence de mot de passe AD en base. L'annuaire et le transport de mail sont simulés dans les tests ; aucun mail réel n'est envoyé. Le raccordement au contrôleur de domaine et au relais SMTP de l'entreprise doit être validé sur son réseau après configuration locale.
-
-Vérification du 24 septembre 2026 : 31 tests réussis sur H2, puis sur PostgreSQL 18.3, sans échec ni test ignoré. La base temporaire de vérification est distincte de la base de travail `ga`.
-
 Références : [authentification Active Directory Spring Security](https://docs.spring.io/spring-security/reference/7.1/api/java/org/springframework/security/ldap/authentication/ad/ActiveDirectoryLdapAuthenticationProvider.html), [envoi de mail Spring Boot](https://docs.spring.io/spring-boot/reference/io/email.html).
-
-### Comptes de démonstration pour le frontend
-
-Pour saisir le mot de passe PostgreSQL localement, sans l'enregistrer dans le code ou l'historique de commandes, lancer `.\demarrer-test.ps1`. Le script utilise `DB_PASSWORD` si cette variable est déjà définie, sinon il demande le mot de passe avec une saisie masquée. Il s'agit du mot de passe du compte PostgreSQL, pas de celui des comptes de l'application.
-
-Démarrer avec le profil `local-test` :
-
-```powershell
-.\mvnw.cmd spring-boot:run '-Dspring-boot.run.profiles=local-test'
-```
-
-Les paramètres PostgreSQL habituels (`DB_PASSWORD`, etc.) restent nécessaires.
-Ce profil crée les comptes manquants : `armand.ga` (utilisateur) et `admin.ga` (administrateur), avec le mot de passe `123456789` pour les deux. Les mots de passe sont hachés en base et ne sont pas réinitialisés à chaque démarrage.
-Les adresses `armand@example.test` et `admin@example.test` sont fictives pour tester les demandes. Les notifications sont conservées en attente, sans envoi réel.
-Ce profil utilise la connexion locale. Sans ce profil, le fonctionnement AD habituel reste inchangé. Ne pas activer `local-test` en production.
 
 ### Connexion locale — phase actuelle
 
-Le mode par défaut est désormais local, avec deux rôles : Utilisateur (LECTEUR dans l’API) et Administrateur (ADMIN). Il ne nécessite aucun serveur AD. Au premier démarrage d’une base vide, définir ADMIN_USERNAME et ADMIN_PASSWORD pour créer le premier administrateur, puis créer les utilisateurs depuis la page Utilisateurs. Les comptes existants sont conservés. Les comptes prédéfinis armand.ga et admin.ga restent disponibles uniquement via le profil local-test explicite. Aucun compte prédéfini n’est ajouté au démarrage normal.
+Le mode par défaut est désormais local, avec deux rôles : Utilisateur (LECTEUR dans l’API) et Administrateur (ADMIN). Il ne nécessite aucun serveur AD. Au premier démarrage d’une base vide, définir ADMIN_USERNAME et ADMIN_PASSWORD pour créer le premier administrateur, puis créer les utilisateurs depuis la page Utilisateurs. Les comptes existants sont conservés. Aucun compte prédéfini n’est ajouté au démarrage normal.
 
 L’intégration AD est conservée inactive pour la prochaine phase. Ne pas définir AUTH_MODE=ad pendant les essais locaux. Le frontend n’a plus de mode démonstration.
 

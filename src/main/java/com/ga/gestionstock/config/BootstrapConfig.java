@@ -9,7 +9,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@Profile("!local-test")
 @org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(name = "app.auth.mode", havingValue = "local")
 public class BootstrapConfig {
     @Bean
