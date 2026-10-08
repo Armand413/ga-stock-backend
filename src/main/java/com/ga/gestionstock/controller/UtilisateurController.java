@@ -30,4 +30,8 @@ public class UtilisateurController {
     public void reinitialiser(@PathVariable Long id, @Valid @RequestBody ReinitialisationMotDePasseRequest input) {
         utilisateurs.reinitialiserMotDePasse(id, input);
     }
-}
+    @PutMapping("/{id}/permissions")
+    public UtilisateurResponse permissions(@PathVariable Long id, @Valid @RequestBody PermissionsRequest input) {
+        return utilisateurs.permissions(id, input);
+    }}
+

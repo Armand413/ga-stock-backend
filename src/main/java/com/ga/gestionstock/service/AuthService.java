@@ -94,7 +94,7 @@ public class AuthService {
                 .filter(s -> ("ad".equals(mode) ? "AD" : "LOCAL").equals(s.getUtilisateur().getOrigine()))
                 .filter(s -> s.getExpiration().isAfter(Instant.now()) && s.getUtilisateur().isActif())
                 .map(s -> new UtilisateurConnecte(s.getUtilisateur().getId(),
-                        s.getUtilisateur().getIdentifiant(), s.getUtilisateur().getRole()));
+                        s.getUtilisateur().getIdentifiant(), s.getUtilisateur().getRole(), s.getUtilisateur().permissionsEffectives()));
     }
 
     public UtilisateurResponse moi(Long id) { return UtilisateurResponse.of(utilisateur(id)); }
@@ -136,3 +136,4 @@ public class AuthService {
         return new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Identifiants invalides ou compte temporairement indisponible.");
     }
 }
+

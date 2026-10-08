@@ -32,7 +32,7 @@ class MigrationTests {
                 stmt.execute("INSERT INTO utilisateurs(identifiant,nom,mot_de_passe,role) VALUES ('ancien','Ancien compte','hash-conserve','GESTIONNAIRE')");
                 stmt.execute("INSERT INTO sessions_acces(empreinte,utilisateur_id,expiration) SELECT 'ancienne-session',id,CURRENT_TIMESTAMP FROM utilisateurs");
                 var flyway = Flyway.configure().dataSource(dataSource).schemas(schema).defaultSchema(schema).load();
-                assertThat(flyway.migrate().migrationsExecuted).isEqualTo(1);
+                assertThat(flyway.migrate().migrationsExecuted).isEqualTo(2);
                 assertThat(flyway.migrate().migrationsExecuted).isZero();
                 try (var rs = stmt.executeQuery("SELECT role, origine, mot_de_passe FROM utilisateurs WHERE identifiant = 'ancien'")) {
                     assertThat(rs.next()).isTrue();
@@ -64,3 +64,4 @@ class MigrationTests {
         }
     }
 }
+

@@ -1,0 +1,60 @@
+reference;nom;unite;quantiteFacturee;prixUnitaireHT;facture
+BUR-001;Stylos Trio bleu rouge et noir;paquet;10;5500;ECTT 002/2026
+BUR-002;Trombones petits 25 mm;paquet;10;3000;ECTT 002/2026
+BUR-003;Trombones gros 43 et 50 mm;paquet;10;4500;ECTT 002/2026
+BUR-004;Trombones moyens 33 mm;paquet;10;3500;ECTT 002/2026
+BUR-005;Couvertures pour reliure;paquet;5;3000;ECTT 002/2026
+BUR-006;Transparents pour reliure;paquet;5;4500;ECTT 002/2026
+BUR-007;Spirales à relier 8 10 12 14 16 18 mm;paquet;6;27500;ECTT 002/2026
+BUR-008;Gommes;paquet;1;2500;ECTT 002/2026
+BUR-009;Cahiers à spirale petit et grand format;paquet;3;18500;ECTT 002/2026
+BUR-010;Scotch grand et petit format;rouleau;4;9500;ECTT 002/2026
+BUR-011;Scotch papier;paquet;2;11000;ECTT 002/2026
+BUR-012;Clés USB 8 Go;paquet;10;5500;ECTT 002/2026
+BUR-013;Papier en carton de 5 rames;carton de 5 rames;20;18000;ECTT 002/2026
+BUR-014;Papier carbone;paquet;2;3000;ECTT 002/2026
+BUR-015;Colle liquide;paquet;2;11500;ECTT 002/2026
+BUR-016;Brouillards de caisse;paquet;5;57500;ECTT 002/2026
+BUR-017;Blocs-notes grand et petit format;paquet;4;18000;ECTT 002/2026
+BUR-018;Enveloppes A4;carton;2;18500;ECTT 002/2026
+BUR-019;Enveloppes A3;carton;2;22500;ECTT 002/2026
+BUR-020;Enveloppes A5;carton;2;11500;ECTT 002/2026
+BUR-021;Post-it 76 mm;carton;1/2;115000;ECTT 002/2026
+BUR-022;Papier cubique;paquet;10;1500;ECTT 002/2026
+BUR-023;Taille-crayons;paquet;1;3000;ECTT 002/2026
+BUR-024;Encre pour cachet bleue;paquet;2;42000;ECTT 002/2026
+BUR-025;Encre pour cachet laser;paquet;2;72000;ECTT 002/2026
+BUR-026;Boîtes d’archives Esselte;paquet;5;37500;ECTT 002/2026
+BUR-027;Sous-chemises;carton;5;47500;ECTT 002/2026
+BUR-028;Chemises;colis;5;47500;ECTT 002/2026
+BUR-029;Agrafeuses B39 Novus;colis;2;95000;ECTT 002/2026
+BUR-030;Agrafes 24/6 Novus;carton;2;22500;ECTT 002/2026
+BUR-031;Calculatrice DJ 1200 Plus;unité;10;17500;ECTT 002/2026
+BUR-032;Crayons à papier;paquet;3;1500;ECTT 002/2026
+BUR-033;Marqueurs noirs rouges et bleus;paquet;15;6000;ECTT 002/2026
+BUR-034;Enveloppes à fenêtre;carton;2;12500;ECTT 002/2026
+BUR-035;Enveloppes sans fenêtre;carton;2;12500;ECTT 002/2026
+BUR-036;Surligneurs jaunes verts et orange;paquet;9;6000;ECTT 002/2026
+BUR-037;Critériums 0,7 mm et mines;paquet;2;23000;ECTT 002/2026
+BUR-038;Transparents pour classement;unité;5;3000;ECTT 002/2026
+BUR-039;Chemises à sangle;carton;2;22500;ECTT 002/2026
+BUR-040;Chemises à sangle à dos large;carton;2;22500;ECTT 002/2026
+BUR-041;Chemises à rabats;carton;3;22500;ECTT 002/2026
+BUR-042;Bracelets;carton;1;1500;ECTT 002/2026
+BUR-043;Pots à crayons;unité;5;2000;ECTT 002/2026
+BUR-044;Désagrafeuses;paquet;1;11000;ECTT 002/2026
+BUR-045;Chronos;paquet;10;3000;ECTT 002/2026
+BUR-046;Parapheurs;paquet;5;11500;ECTT 002/2026
+BUR-047;Registres 300 pages;unité;5;9500;ECTT 002/2026
+BUR-048;Registres 200 pages;unité;5;8500;ECTT 002/2026
+BUR-049;Registres courrier arrivé;unité;10;3500;ECTT 002/2026
+BUR-050;Feuilles de demande;paquet;1;750;ECTT 002/2026
+BUR-051;Ciseaux;unité;5;1500;ECTT 002/2026
+TON-085A;Cartouche HP LaserJet 85A;unité;10;80000;EZIF 045/2026
+TON-083A;Cartouche HP LaserJet 83A;unité;5;80000;EZIF 045/2026
+TON-017A;Cartouche HP LaserJet 17A;unité;25;72500;EZIF 045/2026
+TON-059A;Cartouche HP LaserJet 59A;unité;5;95000;EZIF 045/2026
+TON-080A;Cartouche HP LaserJet 80A;unité;4;95000;EZIF 045/2026
+TON-2630;Cartouche HP LaserJet 2630;unité;2;130000;EZIF 045/2026
+TON-107A;Cartouche HP LaserJet 107A;unité;35;72500;EZIF 045/2026
+TON-106A;Cartouche HP LaserJet 106A;unité;20;72500;EZIF 045/2026

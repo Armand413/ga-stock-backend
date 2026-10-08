@@ -20,11 +20,15 @@ public class BearerTokenFilter extends OncePerRequestFilter {
         String header = request.getHeader("Authorization");
         if (header != null && header.regionMatches(true, 0, "Bearer ", 0, 7)) {
             auth.authentifier(header.substring(7)).ifPresent(user -> {
+                var authorities = new java.util.ArrayList<SimpleGrantedAuthority>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_" + user.role().name()));
+                user.permissions().forEach(p -> authorities.add(new SimpleGrantedAuthority(p.name())));
                 var authentication = new UsernamePasswordAuthenticationToken(user, null,
-                        List.of(new SimpleGrantedAuthority("ROLE_" + user.role().name())));
+                        authorities);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             });
         }
         chain.doFilter(request, response);
     }
 }
+

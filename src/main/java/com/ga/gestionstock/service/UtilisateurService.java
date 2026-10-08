@@ -75,4 +75,16 @@ public class UtilisateurService {
         u.connexionReussie();
         sessions.deleteByUtilisateurId(id);
     }
-}
+    @Transactional
+    public UtilisateurResponse permissions(Long id, @Valid PermissionsRequest input) {
+        Utilisateur u = utilisateurs.verrouiller(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur introuvable."));
+        if (u.getRole() == Role.ADMIN) throw new ResponseStatusException(HttpStatus.CONFLICT,
+                "Un administrateur dispose deja de toutes les permissions.");
+        if (!u.getPermissions().equals(input.permissions())) {
+            u.definirPermissions(input.permissions());
+            sessions.deleteByUtilisateurId(id);
+        }
+        return UtilisateurResponse.of(u);
+    }}
+

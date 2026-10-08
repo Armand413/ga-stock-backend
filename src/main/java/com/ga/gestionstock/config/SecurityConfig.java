@@ -42,6 +42,15 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/demandes").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/demandes/{id}").authenticated()
                         .requestMatchers(HttpMethod.PATCH, "/api/demandes/{id}/annulation").authenticated()
+                        .requestMatchers("/api/tableau-bord").hasAuthority("VOIR_TABLEAU_BORD")
+                        .requestMatchers("/api/articles/export").hasAuthority("EXPORTER_STOCK")
+                        .requestMatchers(HttpMethod.GET, "/api/articles", "/api/articles/{id}").hasAnyAuthority("GERER_ARTICLES", "GERER_STOCK", "EXPORTER_STOCK")
+                        .requestMatchers(HttpMethod.POST, "/api/articles/{id}/mouvements").hasAuthority("GERER_STOCK")
+                        .requestMatchers("/api/articles/**").hasAuthority("GERER_ARTICLES")
+                        .requestMatchers("/api/mouvements").hasAuthority("VOIR_MOUVEMENTS")
+                        .requestMatchers("/api/demandes", "/api/demandes/{id}/decision").hasAuthority("TRAITER_DEMANDES")
+                        .requestMatchers("/api/alertes/**").hasAuthority("GERER_ALERTES")
+                        .requestMatchers("/api/courriels/**").hasAuthority("GERER_NOTIFICATIONS")
                         .requestMatchers("/api/**").hasRole("ADMIN")
                         .anyRequest().denyAll())
                 .exceptionHandling(e -> e
@@ -73,3 +82,4 @@ public class SecurityConfig {
         return source;
     }
 }
+

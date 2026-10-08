@@ -29,6 +29,16 @@ public class Utilisateur {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
     private Role role;
+    @ElementCollection
+    @CollectionTable(name = "utilisateur_permissions", joinColumns = @JoinColumn(name = "utilisateur_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "permission", nullable = false, length = 40)
+    private java.util.Set<Permission> permissions = new java.util.HashSet<>();
+    public boolean autorise(Permission p) { return role == Role.ADMIN || permissions.contains(p); }
+    public java.util.Set<Permission> permissionsEffectives() {
+        return role == Role.ADMIN ? java.util.EnumSet.allOf(Permission.class) : java.util.Set.copyOf(permissions);
+    }
+    public void definirPermissions(java.util.Set<Permission> droits) { permissions.clear(); permissions.addAll(droits); }
     @Column(nullable = false)
     private boolean actif = true;
     @Column(nullable = false)
@@ -82,3 +92,4 @@ public class Utilisateur {
             bloqueJusqua = maintenant.plusSeconds(900);
     }
 }
+

@@ -104,13 +104,14 @@ public class DemandeService {
     }
     private Utilisateur administrateur(Long id) {
         Utilisateur u = utilisateur(id);
-        if (u.getRole() != Role.ADMIN) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Administration requise.");
+        if (!u.autorise(Permission.TRAITER_DEMANDES)) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Administration requise.");
         return u;
     }
     private void verifierAcces(Demande d, Utilisateur u) {
-        if (u.getRole() != Role.ADMIN && !d.getDemandeur().getId().equals(u.getId())) throw absente();
+        if (!u.autorise(Permission.TRAITER_DEMANDES) && !d.getDemandeur().getId().equals(u.getId())) throw absente();
     }
     private static String nettoyer(String s) { return s == null ? null : s.trim(); }
     private static ResponseStatusException absente() { return new ResponseStatusException(HttpStatus.NOT_FOUND, "Ressource introuvable."); }
     private static ResponseStatusException conflit(String message) { return new ResponseStatusException(HttpStatus.CONFLICT, message); }
 }
+

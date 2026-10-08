@@ -14,7 +14,7 @@ public class AuthController {
     private final AuthService auth;
     public AuthController(AuthService auth) { this.auth = auth; }
     @PostMapping("/login")
-    @Operation(summary = "Se connecter avec ses identifiants AD", security = {})
+    @Operation(summary = "Se connecter avec ses identifiants", security = {})
     public ConnexionResponse connexion(@Valid @RequestBody ConnexionRequest input) { return auth.connexion(input); }
     @GetMapping("/me")
     public UtilisateurResponse moi(@AuthenticationPrincipal UtilisateurConnecte utilisateur) { return auth.moi(utilisateur.id()); }
@@ -27,3 +27,4 @@ public class AuthController {
         auth.changerMotDePasse(utilisateur.id(), input);
     }
 }
+
